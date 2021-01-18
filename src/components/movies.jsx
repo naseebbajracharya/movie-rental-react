@@ -6,6 +6,10 @@ class Movies extends Component {
         movies: getMovies()
     };
 
+    handleDelete = (movie) => {
+        console.log(movie);
+    };
+
     render() { 
         return <table className="table table-hover">
             <thead>
@@ -19,12 +23,12 @@ class Movies extends Component {
             </thead>
             <tbody>
                 {this.state.movies.map(movie => (
-                    <tr>
+                    <tr key={movie._id}>
                     <td>{movie.title}</td>
                     <td>{movie.genre.name}</td>
                     <td>{movie.numberInStock}</td>
                     <td>{movie.dailyRentalRate}</td>
-                    <td><button className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button></td>
+                    <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button></td>
                 </tr>
                 ))}
                 
