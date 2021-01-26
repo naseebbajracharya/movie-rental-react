@@ -13,6 +13,10 @@ class Movies extends Component {
         this.setState({movies});
     };
 
+    handleLike = () => {
+        console.log("Liked");
+    }
+
     render() { 
 
         const {length: count} = this.state.movies;
@@ -41,7 +45,7 @@ class Movies extends Component {
                     <td>{movie.genre.name}</td>
                     <td>{movie.numberInStock}</td>
                     <td>{movie.dailyRentalRate}</td>
-                    <td><Like liked={movie.liked}/></td>
+                    <td><Like liked={movie.liked} onClick={this.handleLike}/></td>
                     <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button></td>
                 </tr>
                 ))}
