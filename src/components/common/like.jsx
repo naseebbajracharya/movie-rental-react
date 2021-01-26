@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class Like extends Component {
 
     render() { 
-        return ( <i className="fa fa-thumbs-o-up" aria-hidden="true"></i> );
+        let classes = "fa fa-thumbs-up";
+        if (!this.props.liked) classes += "fa fa-thumbs-o-up";
+        return ( <i className={classes} aria-hidden="true"></i> );
     }
 }
  
