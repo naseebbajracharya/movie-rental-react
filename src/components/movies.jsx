@@ -38,6 +38,8 @@ class Movies extends Component {
         if (count === 0) 
         return <h5>Sorry, there are no movies in the database!</h5>;
 
+        
+
         return (
             <React.Fragment>
                 <h5>Showing {count} movies in the database.</h5>
