@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 const ListGroup = (props) => {
-    const {items, textProperty, valueProperty, onItemSelect} = props;
+    const {items, textProperty, valueProperty, selectedItem, onItemSelect} = props;
         return ( 
             <ul className="list-group">
-                {items.map(item => <li onClick={() => onItemSelect(item)} key={item[valueProperty]} className="list-group-item list-group-item-success">
+                {items.map(item => <li onClick={() => onItemSelect(item)} key={item[valueProperty]} 
+                className={ item === selectedItem ? "list-group-item list-group-item-warning active" : "list-group-item list-group-item-warning"}>
                     {item[textProperty]}
                     </li>)} 
             </ul>
