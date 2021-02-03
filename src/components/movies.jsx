@@ -52,7 +52,7 @@ class Movies extends Component {
         if (count === 0) 
         return <h5>Sorry, there are no movies in the database!</h5>;
 
-        const filtered = selectedGenre ? allMovies.filter(m => m.genre._id === selectedGenre._id) : allMovies;
+        const filtered = selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id) : allMovies;
 
         const movies = Paginate(filtered, currentPage, pageSize);
 
