@@ -6,13 +6,15 @@ import { getMovies } from '../services/fakeMovieService';
 import { Paginate } from '../utils/paginate';
 import { getGenres } from '../services/fakeGenreService';
 import MoviesTable from './moviesTable';
+import _ from 'lodash';
 
 class Movies extends Component {
     state = {
         movies: [],
         currentPage: 1,
         pageSize: 7,
-        genres: []
+        genres: [],
+        sortColumn: {path: 'title', order: 'asc'}
     };
 
     componentDidMount() {
@@ -46,7 +48,7 @@ class Movies extends Component {
     }
 
     handleSort = path => {
-        console.log(path);
+        this.setState({sortColumn: {path, order: 'asc'}});
     }
 
     render() { 
