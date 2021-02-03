@@ -62,7 +62,7 @@ class Movies extends Component {
             </div>
 
             <div className="col">
-            <h5>Showing <span class="badge badge-info">{count}</span> movies in the database.</h5>
+            <h5>Showing <span class="badge badge-info">{filtered.length}</span> movies in the database.</h5>
         <table className="table table-hover">
             <thead>
                 <tr>
