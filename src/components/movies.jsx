@@ -15,7 +15,8 @@ class Movies extends Component {
     };
 
     componentDidMount() {
-        this.setState({movies: getMovies(), genres: getGenres()});
+        const genres = [{name: 'All Genres'}, ...getGenres()]
+        this.setState({movies: getMovies(), genres});
     }
 
     handleDelete = (movie) => {
