@@ -3,16 +3,16 @@ import Like from './common/like';
 
 const MoviesTable = (props) => {
 
-    const {movies, onDelete, onLike} = props;
+    const {movies, onDelete, onLike, onSort} = props;
 
     return ( 
         <table className="table table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Available Stock</th>
-                    <th>Rate</th>
+                    <th onClick={() => onSort('title')}>Title</th>
+                    <th onClick={() => onSort('genre')}>Genre</th>
+                    <th onClick={() => onSort('stock')}>Available Stock</th>
+                    <th onClick={() => onSort('rate')}>Rate</th>
                     <th></th>
                     <th></th>
                 </tr>
