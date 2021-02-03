@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Like from './common/like';
+
 import ListGroup from './common/listGroup';
 import Pagination from './common/pagination';
 import { getMovies } from '../services/fakeMovieService';
 import { Paginate } from '../utils/paginate';
 import { getGenres } from '../services/fakeGenreService';
+import MoviesTable from './moviesTable';
 
 class Movies extends Component {
     state = {
@@ -64,31 +65,9 @@ class Movies extends Component {
 
             <div className="col">
             <h5>Showing <span class="badge badge-info">{filtered.length}</span> movies in the database.</h5>
-        <table className="table table-hover">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Available Stock</th>
-                    <th>Rate</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {movies.map(movie => (
-                    <tr key={movie._id}>
-                    <td>{movie.title}</td>
-                    <td>{movie.genre.name}</td>
-                    <td>{movie.numberInStock}</td>
-                    <td>{movie.dailyRentalRate}</td>
-                    <td><Like liked={movie.liked} onClick={() => this.handleLike(movie)}/></td>
-                    <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button></td>
-                </tr>
-                ))}
-                
-            </tbody>
-        </table>
+
+            <MoviesTable movies={movies} onLike={this.handleLike} onDelete={this.handleDelete}/>
+        
         <Pagination itemsCount={filtered.length} 
                     pageSize={pageSize} 
                     currentPage={currentPage} 
