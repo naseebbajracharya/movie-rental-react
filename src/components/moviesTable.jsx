@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TableHeader from './common/tableHeader';
-import TableBody from './common/tableBody';
 import Like from './common/like';
 import TableBody from './common/tableBody';
 
@@ -22,8 +21,8 @@ class MoviesTable extends Component {
             <table className="table table-hover">
                 <TableHeader columns={this.columns} sortColumn={sortColumn} onSort={onSort}/>
 
-                <TableBody data={movies}/>
-                <tbody>
+                <TableBody columns={this.columns} data={movies}/>
+                {/* <tbody>
                     {movies.map(movie => (
                         <tr key={movie._id}>
                         <td>{movie.title}</td>
@@ -35,7 +34,7 @@ class MoviesTable extends Component {
                     </tr>
                     ))}
                     
-                </tbody>
+                </tbody> */}
             </table>
          );   
     }
