@@ -3,10 +3,16 @@ import React, { Component } from 'react';
 class TableBody extends Component {
     
     render() { 
+
+        const {data, columns} = this.props;
+
         return ( <tbody>
-            <td>
-                <tr></tr>
-            </td>
+            {data.map(item => 
+            <tr>
+                {columns.map(column => <td></td>)}
+            </tr>
+            )}
+            
         </tbody> );
     }
 }

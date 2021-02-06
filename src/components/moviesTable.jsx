@@ -22,7 +22,7 @@ class MoviesTable extends Component {
             <table className="table table-hover">
                 <TableHeader columns={this.columns} sortColumn={sortColumn} onSort={onSort}/>
 
-                <TableBody />
+                <TableBody data={movies}/>
                 <tbody>
                     {movies.map(movie => (
                         <tr key={movie._id}>
