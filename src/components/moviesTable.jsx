@@ -10,8 +10,8 @@ class MoviesTable extends Component {
         {path: 'genre.name', label:'Genre'},
         {path: 'numberInStock', label:'Available Stock'},
         {path: 'dailyRentalRate', label:'Rate'},
-        {key: 'like', content: <Like liked={movie.liked} onClick={() => onLike(movie)}/>},
-        {key: 'delete', content: <button onClick={() => onDelete(movie)} className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button>},
+        {key: 'like', content: movie => (<Like liked={movie.liked} onClick={() => this.props.onLike(movie)}/>)},
+        {key: 'delete', content: movie => (<button onClick={() => this.props.onDelete(movie)} className="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Remove</button>)},
     ];
  
     render() { 
