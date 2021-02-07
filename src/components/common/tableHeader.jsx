@@ -16,6 +16,11 @@ class TableHeader extends Component {
         renderSortIcon = column => {
             if (column.path !== this.props.sortColumn.path)
             return null;
+
+            //rendering diff icons in terms of asc order
+            if (this.props.sortColumn.order === 'asc') {
+                return <i className="fa-sort-alpha-asc"></i>
+            }
         };
 
 
