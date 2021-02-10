@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class MovieForm extends Component {
+const MovieForm = ({match, history}) => {
     
-    render() { 
-        return ( <h1>Movie Form</h1> );
-    }
+return ( 
+    <div>
+        <h1>Movie Form {match.params.id}</h1>
+
+        <button className="btn btn-success" onClick={() => history.push('/movies')}>Save</button>
+    </div>
+ );
+    
 }
  
 export default MovieForm;
