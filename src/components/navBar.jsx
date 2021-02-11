@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../icon/movie-rental-logo.png';
+import '../App.css';
 
 const NavBar = () => {
     return ( 
@@ -46,10 +47,10 @@ const NavBar = () => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/customers">Customers</NavLink>
                     </li>
-                    
+
                 </ul>
             </nav>
-            <NavLink className="btn btn-outline-success" to="#">Login</NavLink>
+            <NavLink className="btn btn-outline-info" to="/login">Login</NavLink>
             </div>
         </div>
   
