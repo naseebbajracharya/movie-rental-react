@@ -12,16 +12,19 @@ class LoginForm extends Component {
         e.preventDefault();
 
         const username = this.username.current.value;
-        console.log(username);
+        //console.log(username);
     };
 
-    handleChange = e => {
+    handleChange = ({currentTarget: input}) => {
         const account = {...this.state.account};
-        account.username = e.currentTarget.value;
+        account[input.name] = input.value;
         this.setState({account});
     }
     
     render() { 
+
+        const {account} = this.state;
+
         return ( 
         <div className="container">
         	<h1 className="text-center">Login</h1>      
@@ -34,12 +37,12 @@ class LoginForm extends Component {
                     
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input value={this.state.account.username} onChange={this.handleChange} autoFocus id="username" type="text" className="form-control"/>
+                        <input value={account.username} onChange={this.handleChange} name="username" autoFocus id="username" type="text" className="form-control"/>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input id="password" type="password" className="form-control"/>
+                        <input value={account.password} onChange={this.handleChange} name="password" id="password" type="password" className="form-control"/>
                     </div>
 
                 <button class="btn btn-success">Login</button>
