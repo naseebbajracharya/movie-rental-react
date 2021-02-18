@@ -35,6 +35,30 @@ class MovieForm extends Form {
       .max(10)
       .label("Daily Rental Rate")
   };
+
+
+  render() {
+    return (
+      <div className='container'>
+        <h1 className='text-center'>Add New Movie</h1>
+        <div className="row">
+        <div class="col"></div>
+
+        <div class="col-8">
+            <form>
+                {this.renderInput("title", "Movie Title")}
+                {this.renderInput("numberInStock", "Total Stock", "number")}
+                {this.renderInput("dailyRentalRate", "Rate")}
+                {this.renderButton("Save")}
+            </form>
+        </div>
+
+        <div className="col"></div>
+        </div>
+        
+      </div>
+    );
+  }
  
 }
 
