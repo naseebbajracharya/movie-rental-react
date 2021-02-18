@@ -62,6 +62,7 @@ class MovieForm extends Form {
         <div class="col-8">
             <form>
                 {this.renderInput("title", "Movie Title")}
+                {this.renderSelect("genreId", "Genre", this.state.genres)}
                 {this.renderInput("numberInStock", "Total Stock", "number")}
                 {this.renderInput("dailyRentalRate", "Rate")}
                 {this.renderButton("Save")}
