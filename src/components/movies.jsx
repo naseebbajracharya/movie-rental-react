@@ -13,9 +13,11 @@ import SearchBox from './searchBox';
 class Movies extends Component {
     state = {
         movies: [],
-        currentPage: 1,
-        pageSize: 7,
         genres: [],
+        currentPage: 1,
+        pageSize: 6,
+        selectedGenre: null,
+        searchQuery: "",
         sortColumn: {path: 'title', order: 'asc'}
     };
 
