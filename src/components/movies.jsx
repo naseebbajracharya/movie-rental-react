@@ -8,6 +8,7 @@ import { getGenres } from '../services/fakeGenreService';
 import MoviesTable from './moviesTable';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import SearchBox from './searchBox';
 
 class Movies extends Component {
     state = {
@@ -45,8 +46,12 @@ class Movies extends Component {
 
     handleGenreSelect = (genre) => {
         //console.log(genre);
-        this.setState({selectedGenre: genre, currentPage: 1});
+        this.setState({selectedGenre: genre, currentPage: 1, searchQuery: ""});
     }
+
+    handleSearch = query => {
+        this.setState({ searchQuery: query, selectedGenre: null, currentPage: 1 });
+      };
 
     handleSort = sortColumn => {
         this.setState({sortColumn});
@@ -83,6 +88,8 @@ class Movies extends Component {
             <div className="col">
                 
             <h5>Showing <span class="badge badge-info">{totalCount}</span> movies in the database. <Link to='/movies/addnew' className='btn btn-sm btn-success' style={{borderRadius: 0}}>Add New Movie</Link> </h5>
+
+            <SearchBox value={searchQuery} onChange={this.handleSearch}/>
 
             <MoviesTable movies={movies} sortColumn={sortColumn} onLike={this.handleLike} onDelete={this.handleDelete} onSort={this.handleSort}/>
         
