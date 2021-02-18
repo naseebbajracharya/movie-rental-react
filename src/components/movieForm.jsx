@@ -36,6 +36,21 @@ class MovieForm extends Form {
       .label("Daily Rental Rate")
   };
 
+  mapToViewModel(movie) {
+    return {
+      _id: movie._id,
+      title: movie.title,
+      genreId: movie.genre._id,
+      numberInStock: movie.numberInStock,
+      dailyRentalRate: movie.dailyRentalRate
+    };
+  }
+
+  doSubmit = () => {
+    saveMovie(this.state.data);
+
+    this.props.history.push("/movies");
+  };
 
   render() {
     return (
