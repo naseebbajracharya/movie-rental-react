@@ -36,6 +36,19 @@ class MovieForm extends Form {
       .label("Daily Rental Rate")
   };
 
+  componentDidMount() {
+    const genres = getGenres();
+    this.setState({ genres });
+
+    const movieId = this.props.match.params.id;
+    if (movieId === "addnew") return;
+
+    const movie = getMovie(movieId);
+    if (!movie) return this.props.history.replace("/not-found");
+
+    this.setState({ data: this.mapToViewModel(movie) });
+  }
+
   mapToViewModel(movie) {
     return {
       _id: movie._id,

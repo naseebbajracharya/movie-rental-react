@@ -24,7 +24,6 @@ function App() {
       <Route path="/not-found" component={NotFound}></Route>
       <Route path="/login" component={LoginForm}></Route>
       <Route path="/registration" component={RegisterForm}></Route>
-      <Route path="/add-movies" component={MovieForm}></Route>
       <Redirect from="/" exact to="/movies"/>
       <Redirect to="/not-found"/>
       </Switch>

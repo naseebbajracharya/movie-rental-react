@@ -82,7 +82,7 @@ class Movies extends Component {
 
             <div className="col">
                 
-            <h5>Showing <span class="badge badge-info">{totalCount}</span> movies in the database. <Link to='/movies/add-movies' className='btn btn-sm btn-success' style={{borderRadius: 0}}>Add New Movie</Link> </h5>
+            <h5>Showing <span class="badge badge-info">{totalCount}</span> movies in the database. <Link to='/movies/addnew' className='btn btn-sm btn-success' style={{borderRadius: 0}}>Add New Movie</Link> </h5>
 
             <MoviesTable movies={movies} sortColumn={sortColumn} onLike={this.handleLike} onDelete={this.handleDelete} onSort={this.handleSort}/>
         
