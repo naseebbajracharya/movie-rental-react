@@ -7,6 +7,7 @@ import { Paginate } from '../utils/paginate';
 import { getGenres } from '../services/fakeGenreService';
 import MoviesTable from './moviesTable';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 class Movies extends Component {
     state = {
@@ -80,7 +81,8 @@ class Movies extends Component {
             </div>
 
             <div className="col">
-            <h5>Showing <span class="badge badge-info">{totalCount}</span> movies in the database.</h5>
+                
+            <h5>Showing <span class="badge badge-info">{totalCount}</span> movies in the database. <Link to='/movies/add-movies' className='btn btn-sm btn-success' style={{borderRadius: 0}}>Add New Movie</Link> </h5>
 
             <MoviesTable movies={movies} sortColumn={sortColumn} onLike={this.handleLike} onDelete={this.handleDelete} onSort={this.handleSort}/>
         
