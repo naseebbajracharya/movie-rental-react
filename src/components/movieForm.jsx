@@ -1,15 +1,41 @@
-import React from 'react';
+import React from "react";
+import Joi from "joi-browser";
+import Form from "./common/form";
+import { getMovie, saveMovie } from "../services/fakeMovieService";
+import { getGenres } from "../services/fakeGenreService";
 
-const MovieForm = ({match, history}) => {
-    
-return ( 
-    <div>
-        <h1 className="text-center">Movie Form {match.params.id}</h1>
+class MovieForm extends Form {
+  state = {
+    data: {
+      title: "",
+      genreId: "",
+      numberInStock: "",
+      dailyRentalRate: ""
+    },
+    genres: [],
+    errors: {}
+  };
 
-        <button className="btn btn-success" onClick={() => history.push('/movies')}>Save</button>
-    </div>
- );
-    
-}
+  schema = {
+    _id: Joi.string(),
+    title: Joi.string()
+      .required()
+      .label("Title"),
+    genreId: Joi.string()
+      .required()
+      .label("Genre"),
+    numberInStock: Joi.number()
+      .required()
+      .min(0)
+      .max(100)
+      .label("Number in Stock"),
+    dailyRentalRate: Joi.number()
+      .required()
+      .min(0)
+      .max(10)
+      .label("Daily Rental Rate")
+  };
  
+}
+
 export default MovieForm;
