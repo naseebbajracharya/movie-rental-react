@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ListGroup from './common/listGroup';
 import Pagination from './common/pagination';
 import { getMovies } from '../services/fakeMovieService';
-import { Paginate } from '../utils/paginate';
+import {Paginate} from '../utils/paginate';
 import { getGenres } from '../services/fakeGenreService';
 import MoviesTable from './moviesTable';
 import _ from 'lodash';
@@ -60,21 +60,27 @@ class Movies extends Component {
     }
 
     getPagedData = () => {
-        const {pageSize, currentPage, sortColumn, selectedGenre, movies: allMovies} = this.state;
+        const {pageSize, currentPage, sortColumn, selectedGenre, searchQuery, movies: allMovies} = this.state;
 
-        const filtered = selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id) : allMovies;
+        let filtered = allMovies;
+        if (searchQuery)
+        filtered = allMovies.filter(m =>
+            m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+        );
+        else if (selectedGenre && selectedGenre._id)
+        filtered = allMovies.filter(m => m.genre._id === selectedGenre._id);
 
         const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
         const movies = Paginate(sorted, currentPage, pageSize);
 
-        return {totalCount: filtered.length, data: movies};
+        return { totalCount: filtered.length, data: movies };
     }
 
     render() { 
 
         const {length: count} = this.state.movies;
-        const {pageSize, currentPage, sortColumn} = this.state;
+        const {pageSize, currentPage, sortColumn, searchQuery} = this.state;
 
         if (count === 0) 
         return <h5>Sorry, there are no movies in the database!</h5>;
